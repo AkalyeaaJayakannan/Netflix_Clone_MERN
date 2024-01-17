@@ -1,0 +1,275 @@
+@import "../../app.scss";
+
+.navbar {
+  width: 100%;
+  color: white;
+  font-size: 14px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
+  transition: all 0.2s ease;
+
+  &.scrolled {
+    background-color: var(--main-color);
+  }
+
+  .container {
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+
+    .left {
+      display: flex;
+      align-items: center;
+
+      img {
+        height: 25px;
+        margin-right: 40px;
+        cursor: pointer;
+      }
+
+      .browseLinkWrapper {
+        .browseDropdown {
+          display: none;
+          visibility: hidden;
+        }
+
+        span {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+
+      .searchContainer {
+        // text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .searchInputContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+        padding: 3px 0;
+        margin-right: 10px;
+        position: relative;
+
+        .searchInsideInput {
+          position: absolute;
+          top: 4px;
+          left: -10px;
+          // bottom: -1px;
+        }
+
+        .searchInput {
+          padding: 5px 15px;
+          padding-left: 40px;
+          border: none;
+          background-color: black;
+          color: white;
+        }
+      }
+
+      .icons {
+        margin: 0 15px;
+        cursor: pointer;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 5px;
+        object-fit: cover;
+        cursor: pointer;
+      }
+
+      .profile {
+        .options {
+          display: none;
+          background-color: var(--main-color);
+          border-radius: 5px;
+
+          span {
+            padding: 10px;
+            cursor: pointer;
+          }
+        }
+
+        &:hover {
+          .options {
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .mdScrnContainer {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+@include px1050 {
+  .navbar {
+    .container {
+      .left {
+        .browseLinkWrapper {
+          .browseDropdown {
+            display: flex;
+            visibility: visible;
+            align-items: center;
+          }
+          .navLinksContainer {
+            display: none;
+            visibility: hidden;
+          }
+          &:hover {
+            .navLinksContainer {
+              visibility: visible;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              position: absolute;
+              padding: 15px;
+
+              background-color: var(--main-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet {
+  .navbar {
+    .lrgScrnContainer {
+      display: none;
+      visibility: hidden;
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      // gap: 10px;
+      height: 50vh;
+      left: 0;
+      top: 70px;
+      bottom: 0;
+      background-color: var(--main-color);
+
+      .lrgScrnLeft {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        img {
+          display: none;
+          visibility: hidden;
+          margin-right: 0;
+        }
+        .browseLinkWrapper {
+          .browseDropdown {
+            display: none;
+            visibility: hidden;
+          }
+          .navLinksContainer {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            visibility: visible;
+            align-items: center;
+            justify-content: space-evenly;
+            gap: 10px;
+          }
+
+          &:hover {
+            .navLinksContainer {
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              visibility: visible;
+              align-items: center;
+              justify-content: space-evenly;
+              gap: 10px;
+
+              padding: 0;
+            }
+          }
+        }
+      }
+      .lrgScrnRight {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        .searchContainer {
+          display: none;
+          visibility: hidden;
+        }
+
+        .profile {
+          .dropdownIcon {
+            display: none;
+            visibility: hidden;
+          }
+
+          .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+      }
+
+      &.openHamNav {
+        position: absolute;
+        display: flex;
+        visibility: visible;
+        top: 70px;
+        left: 0;
+      }
+    }
+
+    .mdScrnContainer {
+      visibility: visible;
+      display: flex;
+      flex-direction: row;
+      // z-index: 999;
+      // background-color: blue;
+      .mdScrnLeft {
+        gap: 10px;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .navbar {
+    .lrgScrnContainer {
+      height: 80vh;
+    }
+    .mdScrnContainer {
+      .mdScrnRight {
+        .searchContainer {
+          .searchInputContainer {
+            margin-right: 0;
+            .searchInput {
+              width: 150px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

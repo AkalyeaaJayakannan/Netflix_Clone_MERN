@@ -1,0 +1,128 @@
+@import "../../app.scss";
+.featured {
+  min-height: 90vh;
+  height: 90vh;
+  position: relative;
+
+  .category {
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+    z-index: 9;
+
+    select {
+      background-color: var(--main-color);
+      color: white;
+      border: 1px solid white;
+      margin-left: 20px;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+  .featuredImg {
+    background: linear-gradient(77deg, rgba(0, 0, 0, 0.6), transparent 85%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .info {
+    position: absolute;
+    min-width: 280px;
+    max-width: 670px;
+    width: 35%;
+    left: 50px;
+    bottom: 16%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    // background-image: linear-gradient(
+    //   77deg,
+    //   rgba(20, 20, 20, 0.5),
+    //   transparent 35%
+    // );
+
+    .featuredTitle {
+      width: 100%;
+      min-width: 65%;
+      height: 60%;
+      object-fit: contain;
+    }
+
+    img {
+      width: 400px;
+    }
+
+    .desc {
+      // margin: 10px 0;
+      margin-bottom: 10px;
+    }
+
+    .buttons {
+      display: flex;
+
+      button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+        font-weight: 500;
+        margin-right: 10px;
+        cursor: pointer;
+
+        &.play {
+          background-color: white;
+          color: var(--main-color);
+        }
+
+        &.more {
+          background-color: grey;
+          color: white;
+        }
+
+        span {
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+
+@include px1050 {
+  .featured {
+    .info {
+      bottom: 13%;
+      .featuredTitle {
+        // width: 95%;
+        height: 100%;
+        min-height: 70%;
+      }
+    }
+  }
+}
+
+@include tablet {
+  .featured {
+    .info {
+      width: 50%;
+      bottom: 12%;
+    }
+  }
+}

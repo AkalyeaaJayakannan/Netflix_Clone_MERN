@@ -1,0 +1,67 @@
+@import "../../app.scss";
+
+.footer {
+  margin: 90px auto 15px;
+  max-width: 980px;
+  padding: 0 4%;
+  color: grey;
+
+  .iconsContainer {
+    display: flex;
+    gap: 15px;
+  }
+
+  .linksContainer {
+    display: flex;
+    list-style: none;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 14px 0 14px;
+    font-size: 13px;
+
+    .linkWrapper {
+      flex-basis: 25%;
+      margin: 0 0 14px;
+      text-decoration: none;
+
+      .footerLink {
+        text-decoration: none;
+        color: white;
+      }
+    }
+  }
+
+  .footerService {
+    .serviceButton {
+      font-size: 14px;
+      padding: 5px 10px;
+      border: 1px solid grey;
+    }
+  }
+
+  .footerCopyright {
+    font-size: 12px;
+    margin-top: 12px;
+  }
+}
+
+@include tablet {
+  .footer {
+    .linksContainer {
+      .linkWrapper {
+        flex-basis: 33%;
+      }
+    }
+  }
+}
+
+@include mobile {
+  .footer {
+    .linksContainer {
+      justify-content: space-between;
+      .linkWrapper {
+        flex-basis: 45%;
+      }
+    }
+  }
+}

@@ -1,0 +1,260 @@
+@import "../../app.scss";
+
+.register {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  // background-image: url(../../assets/NetflixHomePage.jpg);
+  .backgroundImgContainer {
+    position: absolute;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+
+    .backgroundImg {
+      position: absolute;
+      background-size: cover;
+
+      z-index: -2;
+
+      height: 100%;
+      width: 100%;
+    }
+
+    .gradientContainer {
+      position: absolute;
+      // background: ;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      // background: linear-gradient(
+      //     to bottom,
+      //     rgba(0, 0, 0, 0) 0%,
+      //     rgba(0, 0, 0, 1) 100%
+      //   ),
+      //   linear-gradient(
+      //     to top,
+      //     rgba(0, 0, 0, 0.8) 0,
+      //     rgba(0, 0, 0, 0) 60%,
+      //     rgba(0, 0, 0, 0.8) 100%
+      //   );
+      // background-size: cover;
+      .gradient {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 1) 100%
+          ),
+          linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.8) 0,
+            rgba(0, 0, 0, 0) 60%,
+            rgba(0, 0, 0, 0.8) 100%
+          );
+        // background-size: cover;
+      }
+    }
+  }
+
+  .greyBackground {
+    // position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.8) 0,
+      rgba(0, 0, 0, 0) 60%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+    background-color: grey;
+  }
+
+  .top {
+    .wrapper {
+      padding: 20px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .logo {
+        height: 40px;
+        z-index: 1;
+      }
+
+      .loginButton {
+        z-index: 99;
+        background-color: var(--secondary-color);
+        border: none;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .container {
+    max-width: calc(83.33333333333334% - 6rem);
+    margin: 10% auto auto auto;
+
+    // height: 100%;
+    // position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 10;
+
+    .containerItem {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      margin: auto;
+      h1 {
+        font-size: 50px;
+      }
+
+      h2 {
+        margin: 20px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+      .input {
+        width: 60%;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+        height: 60px;
+        border-radius: 5px;
+        min-width: 12.5rem;
+        z-index: 10;
+
+        // overflow: hidden;
+
+        input {
+          // min-width: 150px;
+          height: 100%;
+          width: 100%;
+          flex: 9;
+          border: none;
+          padding: 0 10px;
+        }
+
+        .registerButton {
+          height: 100%;
+          flex: 0 0 auto;
+          padding: 0 10px;
+          border: none;
+          color: white;
+          background-color: var(--secondary-color);
+          font-size: 22px;
+          font-weight: 500;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// media query for tablet
+@include tablet {
+  .register {
+    .top {
+      .wrapper {
+        .logo {
+          height: 30px;
+        }
+        .loginButton {
+          font-size: 14px;
+        }
+      }
+    }
+
+    .container {
+      .containerItem {
+        h1 {
+          font-size: 40px;
+        }
+
+        h2 {
+          margin: 15px;
+        }
+
+        p {
+          font-size: 18px;
+        }
+
+        .input {
+          height: 50px;
+          input {
+            padding: 0 6px;
+          }
+          .registerButton {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// media query for
+@include mobile {
+  .register {
+    .top {
+      .wrapper {
+        .logo {
+          height: 25px;
+        }
+        .loginButton {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .container {
+      .containerItem {
+        h1 {
+          font-size: 30px;
+        }
+
+        h2 {
+          font-size: 20px;
+          margin: 15px;
+        }
+
+        p {
+          font-size: 14px;
+        }
+
+        .input {
+          height: 35px;
+          // input {
+          //   // padding: 0 6px;
+          // }
+          .registerButton {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import "../../app.scss";
+
+.myList {
+  background-color: var(--main-color);
+  overflow-x: hidden;
+  flex: 4;
+  h3 {
+    margin-top: 90px;
+    font-size: 24px;
+    color: white;
+  }
+
+  .myListGridContainer {
+    width: 95vw;
+    margin: auto;
+
+    .itemsGridContainer {
+      margin-top: 150px;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+
+      column-gap: 5px;
+      row-gap: 50px;
+
+      .noListText {
+        color: white;
+        // margin-top: ;
+      }
+
+      .listItem {
+        // flex
+        min-width: 180px;
+        max-width: 250px;
+      }
+    }
+  }
+}
+
+@include px1050 {
+  .myList {
+    background-color: yellow;
+    h3 {
+      color: green;
+      background-color: yellow;
+      font-size: 40px;
+    }
+    .myListGridContainer {
+      .itemsGridContainer {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
