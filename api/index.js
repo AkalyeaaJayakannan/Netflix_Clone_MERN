@@ -8,7 +8,7 @@ const userRoute = require("./routes/users");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
 
-// dotenv.config({ path: "./config.env" });
+dotenv.config({ path: "./.env" });
 
 const db = process.env.MONGO_URL;
 app.use(express.json());
