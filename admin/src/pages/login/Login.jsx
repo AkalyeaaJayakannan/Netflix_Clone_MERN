@@ -9,18 +9,29 @@ function Login() {
   const { isFetching, dispatch } = useContext(AuthContext);
   let isMounted = useRef(true);
 
-  const handleLogin = (e) => {
+  // LOGIN FUNCTION
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+  //   // isMounted.current = true;
+  //   // const userObj = { email: email, password: password };
+
+  //   // if (isMounted) {
+  //   login({ email: email, password: password }, dispatch);
+  //   // }
+
+  //   // return () => {
+  //   //   isMounted.current = false;
+  //   // };
+  // };
+
+  // updated login function
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // isMounted.current = true;
-    // const userObj = { email: email, password: password };
-
-    // if (isMounted) {
-    login({ email: email, password: password }, dispatch);
-    // }
-
-    // return () => {
-    //   isMounted.current = false;
-    // };
+    try {
+      await login({ email, password }, dispatch);
+    } catch (error) {
+      console.error("Login Error:", error);
+    }
   };
 
   return (
