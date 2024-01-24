@@ -9,6 +9,8 @@ import {
   logoutStart,
 } from "./AuthAction";
 
+dotenv.config({ path: "./.env" });
+
 // GET THE API KEY FROM .ENV FILE
 const API_KEY = process.env.API_KEY;
 

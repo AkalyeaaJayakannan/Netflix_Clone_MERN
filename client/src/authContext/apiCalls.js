@@ -12,6 +12,10 @@ import {
   updateUserSuccess,
 } from "./AuthAction";
 
+dotenv.config({ path: "./.env" });
+
+const API_KEY = process.env.API_KEY;
+
 // login
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
