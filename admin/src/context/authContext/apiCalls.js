@@ -9,14 +9,14 @@ import {
   logoutStart,
 } from "./AuthAction";
 
+// GET THE API KEY FROM .ENV FILE
+const API_KEY = process.env.API_KEY;
+
 // login
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post(
-      "https://netflix-api-akalyeaa.onrender.com/api/auth/login",
-      user
-    );
+    const res = await axios.post(`${API_KEY}/api/auth/login`, user);
     if (res.data.isAdmin) {
       dispatch(loginSuccess(res.data));
       // localStorage.setItem("user", JSON.stringify(res.data));
