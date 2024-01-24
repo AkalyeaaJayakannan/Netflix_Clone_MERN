@@ -14,7 +14,7 @@ export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
     const res = await axios.post(
-      "https://netflix-api-akalyeaa.onrender.com/auth/login",
+      "https://netflix-api-akalyeaa.onrender.com/api/auth/login",
       user
     );
     if (res.data.isAdmin) {
