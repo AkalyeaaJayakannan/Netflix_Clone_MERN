@@ -20,7 +20,7 @@ const API_KEY = process.env.API_KEY;
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post("/api/auth/login", user);
+    const res = await axios.post(API_KEY + "/api/auth/login", user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
