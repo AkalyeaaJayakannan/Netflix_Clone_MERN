@@ -7,7 +7,7 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isFetching, dispatch } = useContext(AuthContext);
-  const navigate = useNavigate();
+
   let isMounted = useRef(true);
 
   // LOGIN FUNCTION
