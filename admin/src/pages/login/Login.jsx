@@ -2,6 +2,9 @@ import React, { useContext, useRef, useState } from "react";
 import "./login.css";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { login } from "../../context/authContext/apiCalls";
+import { useHistory } from "react-router-dom";
+
+const history = useHistory();
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -29,6 +32,7 @@ function Login() {
     e.preventDefault();
     try {
       await login({ email, password }, dispatch);
+      await history.push("/");
     } catch (error) {
       console.error("Login Error:", error);
     }
