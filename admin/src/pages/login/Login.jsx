@@ -31,7 +31,7 @@ function Login() {
     e.preventDefault();
     try {
       await login({ email, password }, dispatch);
-      await navigate("/");
+      navigate("/", { replace: true });
     } catch (error) {
       console.error("Login Error:", error);
     }
