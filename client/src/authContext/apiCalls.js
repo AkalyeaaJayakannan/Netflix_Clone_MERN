@@ -12,17 +12,13 @@ import {
   updateUserSuccess,
 } from "./AuthAction";
 
-// require("dotenv").config();
-
-// dotenv.config({ path: "./.env" });
-
 const API_KEY = process.env.API_KEY;
 
 // login
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
-    const res = await axios.post(API_KEY + "/api/auth/login", user);
+    const res = await axios.post(`${API_KEY}/api/auth/login`, user);
     dispatch(loginSuccess(res.data));
   } catch (err) {
     dispatch(loginFailure());
