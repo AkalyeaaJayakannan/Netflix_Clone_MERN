@@ -2,7 +2,6 @@ import React, { useContext, useRef, useState } from "react";
 import "./login.css";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { login } from "../../context/authContext/apiCalls";
-import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -31,7 +30,7 @@ function Login() {
     e.preventDefault();
     try {
       await login({ email, password }, dispatch);
-      navigate("/", { replace: true });
+      window.location.href = "/";
     } catch (error) {
       console.error("Login Error:", error);
     }
