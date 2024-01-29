@@ -9,10 +9,8 @@ import {
   logoutStart,
 } from "./AuthAction";
 
-dotenv.config({ path: "./.env" });
-
 // GET THE API KEY FROM .ENV FILE
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 // login
 export const login = async (user, dispatch) => {
