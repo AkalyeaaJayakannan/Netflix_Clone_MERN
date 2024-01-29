@@ -4,12 +4,11 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { login } from "../../context/authContext/apiCalls";
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isFetching, dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
   let isMounted = useRef(true);
 
   // LOGIN FUNCTION
