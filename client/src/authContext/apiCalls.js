@@ -12,6 +12,8 @@ import {
   updateUserSuccess,
 } from "./AuthAction";
 
+require("dotenv").config();
+
 dotenv.config({ path: "./.env" });
 
 const API_KEY = process.env.API_KEY;
