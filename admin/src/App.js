@@ -33,6 +33,10 @@ function App() {
           path="/login"
           element={user ? <Navigate to="/" /> : <Login />}
         ></Route>
+        <Route
+          path="/register"
+          element={user ? <Navigate to="/" /> : <Login />}
+        ></Route>
       </Routes>
       {user && (
         <>
