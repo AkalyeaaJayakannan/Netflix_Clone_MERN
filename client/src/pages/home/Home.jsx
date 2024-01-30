@@ -10,6 +10,8 @@ import { AuthContext } from "../../authContext/AuthContext";
 import Footer from "../../components/footer/Footer";
 
 const Home = ({ type }) => {
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
 
@@ -24,7 +26,7 @@ const Home = ({ type }) => {
           // `/api/lists${type ? "?type=" + type : "/"}${
           //   genre ? "&genre=" + genre : ""
           // }`,
-          `/api/lists${type ? "?type=" + type : ""}${
+          `${API_KEY}/api/lists${type ? "?type=" + type : ""}${
             genre ? "&genre=" + genre : ""
           }`,
           {

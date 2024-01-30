@@ -8,6 +8,7 @@ import axios from "axios";
 import { useMemo, useState, useEffect } from "react";
 
 export default function Home() {
+  const API_KEY = process.env.REACT_APP_API_KEY;
   const [userStats, setUserStats] = useState([]);
   const MONTHS = useMemo(
     () => [
@@ -30,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get("/api/users/stats", {
+        const res = await axios.get(`${API_KEY}/api/users/stats`, {
           headers: {
             token: `Bearer ${
               JSON.parse(localStorage.getItem("user")).accessToken
