@@ -2,11 +2,13 @@ import React, { useContext, useRef, useState } from "react";
 import "./login.css";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import { login } from "../../context/authContext/apiCalls";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { isFetching, dispatch } = useContext(AuthContext);
+  const nagigate = useNavigate();
 
   let isMounted = useRef(true);
 
@@ -29,8 +31,9 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      await login({ email, password }, dispatch);
-      window.location.href = "/";
+      const userData = await login({ email, password }, dispatch);
+      console.log(userData);
+      nagigate("/");
     } catch (error) {
       console.error("Login Error:", error);
     }
