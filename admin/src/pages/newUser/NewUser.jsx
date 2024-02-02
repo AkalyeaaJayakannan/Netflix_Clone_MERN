@@ -16,11 +16,11 @@ export default function NewUser() {
   const createBtnRef = useRef();
 
   // useEffect to call createHandler, if there is a file and it has been uploaded we are calling the createHandler
-  useEffect(() => {
-    if (uploaded) {
-      createHandler(createBtnRef);
-    }
-  }, [uploaded]);
+  // useEffect(() => {
+  //   if (uploaded) {
+  //     createHandler(createBtnRef);
+  //   }
+  // }, [uploaded]);
 
   // to handle changes in the input fields
   const changesHandler = (e) => {
@@ -127,7 +127,7 @@ export default function NewUser() {
 
         <button
           className="newUserButton"
-          onClick={file ? uploadHandler : createHandler}
+          onClick={file ? uploadHandler : uploadHandler && createHandler}
           ref={createBtnRef}
         >
           Create
