@@ -11,6 +11,7 @@ export default function NewUser() {
   const [file, setFile] = useState(null);
   const [userDetails, setUserDetails] = useState([]);
   const [uploaded, setUploaded] = useState(false);
+  // const [uploadedAndCreate, setUploadedAndCreate] = useState(false);
   const navigate = useNavigate();
 
   // to handle changes in the input fields
@@ -37,9 +38,15 @@ export default function NewUser() {
         return { ...prev, ["profilePic"]: url };
       });
       await setUploaded(true);
+      uploadedAndCreate();
     } catch (err) {
       console.log(err);
     }
+  };
+
+  // function to call createHandler, if there is a file and it has been uploaded we are calling the createHandler
+  const uploadedAndCreate = () => {
+    createHandler();
   };
 
   // to create a user with the user details that we have in the state
@@ -106,7 +113,7 @@ export default function NewUser() {
         </div>
 
         {/* to display the create button on successfull profile upload */}
-        {uploaded ? (
+        {/* {uploaded ? (
           <button className="newUserButton" onClick={createHandler}>
             Create
           </button>
@@ -114,7 +121,14 @@ export default function NewUser() {
           <button className="newUserButton" onClick={uploadHandler}>
             Upload
           </button>
-        )}
+        )} */}
+
+        <button
+          className="newUserButton"
+          onClick={file ? uploadHandler : createHandler}
+        >
+          Create
+        </button>
       </form>
     </div>
   );
