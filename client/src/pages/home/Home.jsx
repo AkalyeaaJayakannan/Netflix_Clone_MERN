@@ -10,6 +10,7 @@ import { AuthContext } from "../../authContext/AuthContext";
 import Footer from "../../components/footer/Footer";
 
 const Home = ({ type }) => {
+  // GET THE API KEY FROM .ENV FILE
   const API_KEY = process.env.REACT_APP_API_KEY;
 
   const [lists, setLists] = useState([]);

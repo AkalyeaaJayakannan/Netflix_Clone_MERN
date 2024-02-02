@@ -4,6 +4,9 @@ import "./register.scss";
 import axios from "axios";
 
 function Register() {
+  // GET THE API KEY FROM .ENV FILE
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -20,7 +23,7 @@ function Register() {
     setEmail(emailRef.current.value);
     const getUserIfAny = async (emailInput) => {
       console.log("trying to make request");
-      const res = await axios.get(`/api/users/check/${emailInput}`);
+      const res = await axios.get(`${API_KEY}/api/users/check/${emailInput}`);
       console.log(res.data);
       console.log(emailInput);
       res.data === "true" && console.log("It is true ");
@@ -45,7 +48,11 @@ function Register() {
 
   useEffect(() => {
     const finalFinishHandler = async () => {
-      await axios.post("/api/auth/register", { email, username, password });
+      await axios.post(`${API_KEY}/api/auth/register`, {
+        email,
+        username,
+        password,
+      });
       setNavigateToLogin(true);
     };
     finalFinish && finalFinishHandler();

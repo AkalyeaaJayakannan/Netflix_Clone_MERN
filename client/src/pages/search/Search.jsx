@@ -11,6 +11,9 @@ import { getUser } from "../../userContext/apiCalls";
 import { useLocation } from "react-router-dom";
 
 const Search = () => {
+  // GET THE API KEY FROM .ENV FILE
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const { user, dispatch } = useContext(AuthContext);
   const { user: updatedUser, dispatch: userDispatch } = useContext(UserContext);
   const [lists, setLists] = useState(null);
@@ -20,13 +23,16 @@ const Search = () => {
 
   useLayoutEffect(() => {
     const getMovieByName = async () => {
-      const res = await axios.get(`/api/movies/search/${searchTerm}`, {
-        headers: {
-          token: `Bearer ${
-            JSON.parse(localStorage.getItem("user")).accessToken
-          }`,
-        },
-      });
+      const res = await axios.get(
+        `${API_KEY}/api/movies/search/${searchTerm}`,
+        {
+          headers: {
+            token: `Bearer ${
+              JSON.parse(localStorage.getItem("user")).accessToken
+            }`,
+          },
+        }
+      );
       setLists([...res.data]);
     };
     getMovieByName();

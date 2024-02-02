@@ -7,6 +7,9 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
 function Featured({ type, setGenre }) {
+  // GET THE API KEY FROM .ENV FILE
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [movie, setMovie] = useState({});
   const location = useLocation();
   const navigate = useNavigate();
@@ -14,13 +17,16 @@ function Featured({ type, setGenre }) {
   useLayoutEffect(() => {
     const getRandomMovie = async () => {
       try {
-        const res = await axios.get(`/api/movies/random?type=${type}`, {
-          headers: {
-            token: `Bearer ${
-              JSON.parse(localStorage.getItem("user")).accessToken
-            }`,
-          },
-        });
+        const res = await axios.get(
+          `${API_KEY}/api/movies/random?type=${type}`,
+          {
+            headers: {
+              token: `Bearer ${
+                JSON.parse(localStorage.getItem("user")).accessToken
+              }`,
+            },
+          }
+        );
 
         setMovie(res.data[0]);
       } catch (err) {

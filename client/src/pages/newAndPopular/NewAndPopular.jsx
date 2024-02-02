@@ -10,6 +10,9 @@ import { UserContext } from "../../userContext/UserContext";
 import { getUser } from "../../userContext/apiCalls";
 
 const NewAndPopular = () => {
+  // GET THE API KEY FROM .ENV FILE
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [lists, setLists] = useState(null);
   const { user, dispatch } = useContext(AuthContext);
   const { user: updatedUser, dispatch: userDispatch } = useContext(UserContext);
@@ -18,13 +21,16 @@ const NewAndPopular = () => {
   useLayoutEffect(() => {
     const getRandomLists = async () => {
       try {
-        const res = await axios.get(`/api/lists/?type=newAndPopular`, {
-          headers: {
-            token: `Bearer ${
-              JSON.parse(localStorage.getItem("user")).accessToken
-            }`,
-          },
-        });
+        const res = await axios.get(
+          `${API_KEY}/api/lists/?type=newAndPopular`,
+          {
+            headers: {
+              token: `Bearer ${
+                JSON.parse(localStorage.getItem("user")).accessToken
+              }`,
+            },
+          }
+        );
         setLists(res.data);
       } catch (err) {
         console.log(err);
