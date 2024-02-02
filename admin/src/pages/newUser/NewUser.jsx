@@ -118,8 +118,8 @@ export default function NewUser() {
             </button>
           )
         ) : (
-          <button className="newUserButton" onClick={uploadHandler}>
-            Upload
+          <button className="newUserButton" onClick={createHandler}>
+            Create
           </button>
         )}
       </form>
