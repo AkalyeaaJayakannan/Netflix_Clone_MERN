@@ -107,7 +107,7 @@ export default function NewUser() {
         </div>
 
         {/* to display the create button on successfull profile upload */}
-        {file ? (
+        {/* {file ? (
           uploaded ? (
             <button className="newUserButton" onClick={createHandler}>
               Create
@@ -121,7 +121,20 @@ export default function NewUser() {
           <button className="newUserButton" onClick={createHandler}>
             Create
           </button>
-        )}
+        )} */}
+        <button
+          className="newUserButton"
+          onClick={
+            file
+              ? () => {
+                  uploadHandler;
+                  createHandler;
+                }
+              : createHandler
+          }
+        >
+          Create
+        </button>
       </form>
     </div>
   );
