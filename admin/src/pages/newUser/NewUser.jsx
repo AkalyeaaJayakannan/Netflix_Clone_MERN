@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import "./newUser.css";
 import { UserContext } from "../../context/userContext/UserContext";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
@@ -13,13 +13,15 @@ export default function NewUser() {
   const [uploaded, setUploaded] = useState(false);
   // const [uploadedAndCreate, setUploadedAndCreate] = useState(false);
   const navigate = useNavigate();
+  const createBtnRef = useRef();
 
   // useEffect to call createHandler, if there is a file and it has been uploaded we are calling the createHandler
   useEffect(() => {
     if (uploaded) {
-      createHandler();
+      createHandler(createBtnRef);
     }
   }, [uploaded]);
+
   // to handle changes in the input fields
   const changesHandler = (e) => {
     const value = e.target.value;
@@ -126,6 +128,7 @@ export default function NewUser() {
         <button
           className="newUserButton"
           onClick={file ? uploadHandler : createHandler}
+          ref={createBtnRef}
         >
           Create
         </button>
