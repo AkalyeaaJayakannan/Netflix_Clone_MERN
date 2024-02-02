@@ -111,7 +111,7 @@ function ListItem({ index, item, listItemRef, setWidth }) {
   useLayoutEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get(`${API_KEY}api/movies/find/` + item, {
+        const res = await axios.get(`${API_KEY}/api/movies/find/` + item, {
           headers: {
             token: `Bearer ${
               JSON.parse(localStorage.getItem("user")).accessToken
