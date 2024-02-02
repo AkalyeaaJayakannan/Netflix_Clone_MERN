@@ -8,7 +8,9 @@ import axios from "axios";
 import { useMemo, useState, useEffect } from "react";
 
 export default function Home() {
+  // GET THE API KEY FROM .ENV FILE
   const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [userStats, setUserStats] = useState([]);
   const MONTHS = useMemo(
     () => [

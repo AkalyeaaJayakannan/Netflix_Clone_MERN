@@ -14,11 +14,14 @@ import {
   updateListSuccess,
 } from "./ListAction";
 
+// GET THE API KEY FROM .ENV FILE
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 // create list
 export const createList = async (list, dispatch) => {
   dispatch(createListStart());
   try {
-    const res = await axios.post("/api/lists/", list, {
+    const res = await axios.post(`${API_KEY}/api/lists/`, list, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
       },
@@ -33,7 +36,7 @@ export const createList = async (list, dispatch) => {
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axios.get("/api/lists/all", {
+    const res = await axios.get(`${API_KEY}/api/lists/all`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -65,7 +68,7 @@ export const getLists = async (dispatch) => {
 export const updateList = async (id, changes, dispatch) => {
   dispatch(updateListStart());
   try {
-    const res = await axios.put(`/api/lists/${id}`, changes, {
+    const res = await axios.put(`${API_KEY}/api/lists/${id}`, changes, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
       },
@@ -82,7 +85,7 @@ export const updateList = async (id, changes, dispatch) => {
 export const deleteList = async (id, dispatch) => {
   dispatch(deleteListStart());
   try {
-    await axios.delete("/api/lists/" + id, {
+    await axios.delete(`${API_KEY}/api/lists/` + id, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}
         `,

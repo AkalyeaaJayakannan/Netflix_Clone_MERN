@@ -40,7 +40,7 @@ const AuthReducer = (state, action) => {
         error: false,
       };
 
-    case "GET_USER_SUCCESS":
+    case "GET_USER_FAILURE":
       return {
         ...state,
         isFetching: false,

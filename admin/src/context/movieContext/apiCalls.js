@@ -17,11 +17,14 @@ import {
   updateMovieSuccess,
 } from "./MovieAction";
 
+// GET THE API KEY FROM .ENV FILE
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 // create movie
 export const createMovie = async (movie, dispatch) => {
   dispatch(createMovieStart());
   try {
-    const res = await axios.post("/api/movies/", movie, {
+    const res = await axios.post(`${API_KEY}/api/movies/`, movie, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
       },
@@ -36,7 +39,7 @@ export const createMovie = async (movie, dispatch) => {
 export const getMovies = async (dispatch) => {
   dispatch(getMoviesStart());
   try {
-    const res = await axios.get("/api/movies", {
+    const res = await axios.get(`${API_KEY}/api/movies`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -51,7 +54,7 @@ export const getMovies = async (dispatch) => {
 export const updateMovie = async (id, changes, dispatch) => {
   dispatch(updateMovieStart());
   try {
-    const res = await axios.put(`/api/movies/${id}`, changes, {
+    const res = await axios.put(`${API_KEY}/api/movies/${id}`, changes, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
       },
@@ -68,7 +71,7 @@ export const updateMovie = async (id, changes, dispatch) => {
 export const deleteMovie = async (id, dispatch) => {
   dispatch(deleteMovieStart());
   try {
-    await axios.delete("/api/movies/" + id, {
+    await axios.delete(`${API_KEY}/api/movies/` + id, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}
         `,

@@ -35,7 +35,7 @@ export const logout = async (dispatch) => {
 export const getUser = async (id, dispatch) => {
   dispatch(getUserStart());
   try {
-    const res = await axios.get("/api/users/find/" + id);
+    const res = await axios.get(`${API_KEY}/api/users/find/` + id);
     dispatch(getUserSuccess(res.data));
   } catch (err) {
     dispatch(getUserFailure());

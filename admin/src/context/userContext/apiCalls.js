@@ -29,11 +29,14 @@ import {
   updateUserSuccess,
 } from "./UserAction";
 
+// GET THE API KEY FROM .ENV FILE
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 // create user
 export const createUser = async (user, dispatch) => {
   dispatch(createUserStart());
   try {
-    const res = await axios.post("/api/auth/register", user);
+    const res = await axios.post(`${API_KEY}/api/auth/register`, user);
     dispatch(createUserSuccess(res.data));
   } catch (err) {
     dispatch(createUserFailure());
@@ -44,7 +47,7 @@ export const createUser = async (user, dispatch) => {
 export const getUsers = async (dispatch) => {
   dispatch(getUsersStart());
   try {
-    const res = await axios.get("/api/users", {
+    const res = await axios.get(`${API_KEY}/api/users`, {
       headers: {
         token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
@@ -59,7 +62,7 @@ export const getUsers = async (dispatch) => {
 export const updateUser = async (id, changes, dispatch) => {
   dispatch(updateUserStart());
   try {
-    const res = await axios.put(`/api/users/${id}`, changes, {
+    const res = await axios.put(`${API_KEY}/api/users/${id}`, changes, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}`,
       },
@@ -76,7 +79,7 @@ export const updateUser = async (id, changes, dispatch) => {
 export const deleteUser = async (id, dispatch) => {
   dispatch(deleteUserStart());
   try {
-    await axios.delete("/api/users/" + id, {
+    await axios.delete(`${API_KEY}/api/users/` + id, {
       headers: {
         token: `Bearer ${JSON.parse(localStorage.getItem("user")).accessToken}
         `,

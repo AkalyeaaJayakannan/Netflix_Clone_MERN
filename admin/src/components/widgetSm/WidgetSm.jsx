@@ -4,12 +4,15 @@ import { Visibility } from "@material-ui/icons";
 import axios from "axios";
 
 export default function WidgetSm() {
+  // GET THE API KEY FROM .ENV FILE
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const [newUsers, setNewUsers] = useState([]);
 
   useEffect(() => {
     const getNewUsers = async () => {
       try {
-        const res = await axios.get("/api/users?new=true", {
+        const res = await axios.get(`${API_KEY}/api/users?new=true`, {
           headers: {
             token: `Bearer ${
               JSON.parse(localStorage.getItem("user")).accessToken
