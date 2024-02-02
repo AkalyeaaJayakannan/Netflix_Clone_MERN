@@ -11,16 +11,8 @@ export default function NewUser() {
   const [file, setFile] = useState(null);
   const [userDetails, setUserDetails] = useState([]);
   const [uploaded, setUploaded] = useState(false);
-  // const [uploadedAndCreate, setUploadedAndCreate] = useState(false);
   const navigate = useNavigate();
   const createBtnRef = useRef();
-
-  // useEffect to call createHandler, if there is a file and it has been uploaded we are calling the createHandler
-  // useEffect(() => {
-  //   if (uploaded) {
-  //     createHandler(createBtnRef);
-  //   }
-  // }, [uploaded]);
 
   // to handle changes in the input fields
   const changesHandler = (e) => {
@@ -115,23 +107,21 @@ export default function NewUser() {
         </div>
 
         {/* to display the create button on successfull profile upload */}
-        {/* {uploaded ? (
-          <button className="newUserButton" onClick={createHandler}>
-            Create
-          </button>
+        {file ? (
+          uploaded ? (
+            <button className="newUserButton" onClick={createHandler}>
+              Create
+            </button>
+          ) : (
+            <button className="newUserButton" onClick={uploadHandler}>
+              Upload
+            </button>
+          )
         ) : (
           <button className="newUserButton" onClick={uploadHandler}>
             Upload
           </button>
-        )} */}
-
-        <button
-          className="newUserButton"
-          onClick={file ? uploadHandler : uploadHandler && createHandler}
-          ref={createBtnRef}
-        >
-          Create
-        </button>
+        )}
       </form>
     </div>
   );
